@@ -1,26 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 
-const ToDoItem = (props) => {
-  const [click, setClick] = useState(false);
-
-  function lineThrough() {
-    setClick((prevValue) => {
-      return !prevValue;
-    });
-  }
-
+function ToDoItem(props) {
   return (
-    <li
-      style={
-        click === false
-          ? { textDecoration: "" }
-          : { textDecoration: "line-through" }
-      }
-      onClick={lineThrough}
+    <div
+      onClick={() => {
+        props.onCheck(props.id);
+      }}
     >
-      {props.text}
-    </li>
+      <li>{props.text}</li>
+    </div>
   );
-};
+}
 
 export default ToDoItem;
